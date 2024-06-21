@@ -12,15 +12,15 @@ adj = torch.ones((8,8))
 class GNN(nn.Module):
     def __init__(self, input_feat, output_feat, indicator):
         super(GNN, self).__init__()
-        self.W_gnn = nn.Parameter(initializer(torch.randn(input_feat*7, output_feat*7)))    # gnn 이랑 attention인 경우에 사용
+        self.W_gnn = nn.Parameter(initializer(torch.randn(input_feat*7, output_feat*7))) ##   # gnn 이랑 attention인 경우에 사용
         self.W_gnn2 = nn.Parameter(initializer(torch.randn(input_feat * 7, output_feat * 7)))  # gnn 이랑 attention인 경우에 사용
-        self.B_gnn = nn.Parameter((torch.randn(output_feat*7)))
+        self.B_gnn = nn.Parameter((torch.randn(output_feat*7))) ##
         self.W_cat = nn.Parameter(initializer(torch.randn(input_feat *7*2, output_feat*7)))  # concat만 할 경우 사용
         self.B_cat = nn.Parameter((torch.randn(output_feat * 7)))
         self.W_att = nn.Parameter(initializer(torch.randn(output_feat* 2*7, 1)))   #W_att 에 쓰이는 파라미터
         self.W_att2 = nn.Parameter(initializer(torch.randn(output_feat * 2 * 7, 1)))
         self.W_att3 = nn.Parameter(initializer(torch.randn(output_feat * 2 * 7, 1)))
-        self.MHA = torch.nn.MultiheadAttention(embed_dim=output_feat * 7, num_heads=4, batch_first=True)
+        self.MHA = torch.nn.MultiheadAttention(embed_dim=output_feat * 7, num_heads=4, batch_first=True)##
 
 
         ### for GAT --0705
